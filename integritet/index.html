@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integritetspolicy – HelGo</title>
+<meta name="description" content="Så hanterar HelGo dina uppgifter: allt sparas i telefonen, inga konton, och bara anonyma kraschrapporter lämnar appen.">
+<link rel="canonical" href="https://helgoapp.se/integritet/">
+<meta name="theme-color" content="#F6F6F0">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="../img/appicon-1024.png" sizes="any" type="image/png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<style>
+:root{
+  /* Hämtade ur appens designunderlag: docs/Designunderlag-Helggo.se.md */
+  --paper:#F6F6F0; --surface:#FFFFFF;
+  --ink:#183C34; --text:#233D36; --muted:#5A6960;
+  --primary:#214F41; --on-primary:#FFFFFF;
+  --muted-on-primary:#CAD7C9; --line-on-primary:#4B6E5F;
+  --soft:#E6EEE5; --selected:#F0F3E9; --suggest:#E3EFCF; --accent:#E7EDBB;
+  --line:#E1E5DC;
+  --holiday:#A34C3C; --holiday-soft:#FBE4DF; --weekend:#E7E8E6;
+  --logo-green:#234F40; --logo-lime:#E3E9B0; --logo-muted:#5D7D62;
+  --r-sm:12px; --r-md:16px; --r-lg:24px; --r-xl:28px;
+  --gut:24px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0; background:var(--paper); color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px; line-height:25px; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{color:var(--ink); font-weight:600; letter-spacing:-0.0375em; margin:0}
+p{margin:0}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--logo-muted); outline-offset:3px; border-radius:6px}
+
+.wrap{width:100%; max-width:1120px; margin-inline:auto; padding-inline:var(--gut)}
+.skip{position:absolute; left:-9999px; top:0; background:var(--primary); color:#fff;
+  padding:12px 18px; border-radius:0 0 var(--r-sm) 0; z-index:10}
+.skip:focus{left:0}
+
+/* ---------- Sidhuvud ---------- */
+.site-head{display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding-block:20px; flex-wrap:wrap}
+.brand{display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  min-height:44px; color:var(--logo-green)}
+.brand .mark{width:34px; height:34px; flex:none; border-radius:9px}
+.brand .word{font-size:23px; font-weight:700; letter-spacing:-0.04em}
+.site-nav{display:flex; align-items:center; gap:4px}
+.site-nav a{display:inline-flex; align-items:center; min-height:44px; padding-inline:14px;
+  font-size:15px; text-decoration:none; border-radius:999px}
+.site-nav a:hover{background:var(--soft)}
+
+
+/* ---------- Sidfot ---------- */
+.site-foot{border-top:1px solid var(--line); padding-block:28px 40px;
+  display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center;
+  justify-content:space-between; font-size:13px; line-height:20px; color:var(--muted)}
+.site-foot .brand .word{font-size:19px}
+
+/* ---------- Textsida ---------- */
+.doc{max-width:720px; padding-block:24px 64px}
+.doc h1{font-size:clamp(32px,4.6vw,44px); line-height:1.1; margin-bottom:12px}
+.doc h2{font-size:22px; line-height:1.3; margin:44px 0 10px}
+.doc p,.doc li{font-size:17px; line-height:27px; max-width:65ch}
+.doc p+p{margin-top:14px}
+.doc ul{padding-left:22px; margin:10px 0 0}
+.doc li+li{margin-top:6px}
+.doc ul+p,.doc table+p{margin-top:14px}
+.doc a{color:var(--primary)}
+.lede{font-size:18px; line-height:28px; color:var(--muted)}
+.muted{color:var(--muted); font-size:15px !important}
+.summary{background:var(--primary); color:var(--on-primary); border-radius:var(--r-lg); padding:28px; margin-top:32px}
+.summary h2{color:var(--accent); margin:0 0 10px; font-size:20px}
+.summary li{color:var(--on-primary)}
+.contact{background:var(--soft); border-radius:var(--r-lg); padding:28px; margin-top:32px}
+.contact h2{margin-top:0}
+table{width:100%; border-collapse:collapse; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; font-size:15px; line-height:23px; margin-top:12px}
+th,td{text-align:left; vertical-align:top; padding:14px 16px; border-top:1px solid var(--line)}
+th{background:var(--soft); color:var(--ink); border-top:0; font-weight:600}
+td:first-child{font-weight:600; color:var(--ink); white-space:nowrap}
+details{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); margin-top:10px; padding:0 18px}
+summary{cursor:pointer; min-height:56px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:600; color:var(--ink); list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-size:22px; color:var(--muted); flex:none}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:16px}
+.site-nav a[aria-current="page"]{background:var(--soft); color:var(--ink); font-weight:600}
+.site-foot nav{display:flex; gap:4px 18px; flex-wrap:wrap}
+.site-foot nav a{color:var(--muted); min-height:44px; display:inline-flex; align-items:center}
+@media (max-width:560px){
+  :root{--gut:20px}
+  table,thead,tbody,tr,th,td{display:block} thead{display:none}
+  tr{border-top:1px solid var(--line); padding:10px 0} tr:first-child{border-top:0}
+  td{border-top:0; padding:4px 16px; white-space:normal}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Hoppa till innehållet</a>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute" focusable="false">
+  <symbol id="helgo-mark" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#234F40"/>
+    <g fill="#5D7D62">
+      <rect x="188"   y="188" width="127" height="127" rx="32"/>
+      <rect x="361.5" y="188" width="127" height="127" rx="32"/>
+      <rect x="535"   y="188" width="127" height="127" rx="32"/>
+      <rect x="708.5" y="188" width="127" height="127" rx="32"/>
+      <rect x="188"   y="361.5" width="127" height="127" rx="32"/>
+      <rect x="361.5" y="361.5" width="127" height="127" rx="32"/>
+      <rect x="535"   y="361.5" width="127" height="127" rx="32"/>
+      <rect x="708.5" y="361.5" width="127" height="127" rx="32"/>
+      <rect x="188"   y="535" width="127" height="127" rx="32"/>
+      <rect x="188"   y="708.5" width="127" height="127" rx="32"/>
+      <rect x="361.5" y="708.5" width="127" height="127" rx="32"/>
+      <rect x="535"   y="708.5" width="127" height="127" rx="32"/>
+      <rect x="708.5" y="708.5" width="127" height="127" rx="32"/>
+    </g>
+    <rect x="361.5" y="535" width="474" height="127" rx="46" fill="#E3E9B0"/>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="../">
+      <svg class="mark" aria-hidden="true" focusable="false"><use href="#helgo-mark"/></svg>
+      <span class="word">HelGo</span>
+    </a>
+    <nav class="site-nav" aria-label="Sidnavigering">
+      <a href="../support/">Support</a>
+      <a href="../integritet/" aria-current="page">Integritet</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main" class="wrap doc">
+  <h1>Integritetspolicy</h1>
+  <p class="lede">Gäller appen HelGo för iPhone. Senast uppdaterad 17 november 2026.</p>
+
+  <section class="summary" aria-labelledby="kort">
+    <h2 id="kort">Kort sagt</h2>
+    <ul>
+      <li>Det du anger i HelGo sparas bara i din telefon. Vi kan inte se det.</li>
+      <li>Det finns inga konton och ingen inloggning.</li>
+      <li>Om appen kraschar skickas en anonym felrapport, så att vi kan rätta felet.</li>
+      <li>Ingen spårning, ingen reklam och ingen försäljning av uppgifter.</li>
+    </ul>
+  </section>
+
+  <h2>Vem ansvarar</h2>
+  <p>Ilma Group AB, organisationsnummer [org.nr], [postadress], ansvarar för appen och för de uppgifter som beskrivs här. Frågor om integritet skickar du till <a href="mailto:support@helgoapp.se">support@helgoapp.se</a>.</p>
+
+  <h2>Det som stannar i telefonen</h2>
+  <p>Allt du anger i HelGo sparas lokalt i appen på din telefon och skickas inte till oss eller någon annan. Det gäller till exempel:</p>
+  <ul>
+    <li>semesterdagar, arbetsdagar, arbetsplats och dina bokade ledigheter</li>
+    <li>barnens namn, födelsedatum och skolor, föräldradagar och viktiga datum</li>
+    <li>lön, om du anger den för att se vad föräldradagarna kostar</li>
+    <li>inställningar för påminnelser</li>
+  </ul>
+  <p>Eftersom uppgifterna bara finns i din telefon kan vi inte läsa, rätta eller radera dem åt dig. Du raderar dem själv med <em>Rensa allt och börja om</em> under Inställningar eller genom att ta bort appen.</p>
+
+  <h2>Det som lämnar telefonen</h2>
+  <table>
+    <thead><tr><th>Vad</th><th>Varför och hur</th></tr></thead>
+    <tbody>
+      <tr><td>Kraschrapporter</td><td>Om appen kraschar skickas en felrapport till vår leverantör Sentry, med servrar i Frankfurt, Tyskland. Rapporten innehåller felet och var i koden det uppstod, appens version, telefonmodell och iOS-version, samt vilka skärmar som visades strax före. Den innehåller inte din plan, dina barn, din lön, något du har skrivit, din IP-adress, skärmbilder eller något som pekar ut dig. Rapporterna sparas i högst 90 dagar och används bara för att hitta och rätta fel. Rättslig grund: vårt berättigade intresse av en app som fungerar.</td></tr>
+      <tr><td>Köp av HelGo Pro</td><td>Köpet görs och hanteras helt av Apple. Vi får inga uppgifter om dig från köpet. Appen frågar App Store på telefonen om du äger Pro. Se <a href="https://www.apple.com/se/legal/privacy/">Apples integritetspolicy</a>.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Sådant du själv väljer att dela</h2>
+  <ul>
+    <li><strong>Dela med chefen.</strong> När du delar din ledighet öppnas din egen mejl- eller sms-app med ett färdigt meddelande. Du bestämmer om och till vem det skickas.</li>
+    <li><strong>Kalendern.</strong> Om du väljer att lägga ledigheterna i kalendern ber appen om lov och skriver bara i den kalender du väljer. Kalendern synkas sedan som du har ställt in den, till exempel via iCloud.</li>
+    <li><strong>Telefonens säkerhetskopia.</strong> Har du iCloud-säkerhetskopiering påslagen följer planen med i telefonens säkerhetskopia hos Apple, precis som för andra appar. Vi har ingen tillgång till den.</li>
+    <li><strong>Exporterad plan.</strong> En exporterad plan är en fil som du själv sparar eller skickar. Lönen och ditt Pro-köp följer inte med i filen.</li>
+    <li><strong>Påminnelser</strong> skapas i telefonen. Inget skickas via någon server.</li>
+  </ul>
+
+  <h2>Dina rättigheter</h2>
+  <p>Enligt dataskyddsförordningen (GDPR) har du rätt att få veta vilka personuppgifter vi behandlar om dig, och att få dem rättade eller raderade. Kraschrapporterna går inte att koppla till dig, så vi kan i regel inte hitta just dina. Hör av dig om du har frågor. Du kan också klaga hos <a href="https://www.imy.se">Integritetsskyddsmyndigheten (IMY)</a>.</p>
+
+  <h2>Barn</h2>
+  <p>HelGo är gjord för vuxna som planerar sin ledighet. Uppgifter om barn som du lägger in stannar i telefonen.</p>
+
+  <h2>Ändringar</h2>
+  <p>Om vi ändrar hur appen hanterar uppgifter uppdaterar vi den här sidan och datumet högst upp innan ändringen gäller.</p>
+
+  <p class="muted">HelGo är ett planeringsstöd. Hur din semester och föräldraledighet fungerar avgörs av ditt kollektivavtal, din arbetsgivare och Försäkringskassan.</p>
+</main>
+
+<div class="wrap">
+  <footer class="site-foot">
+    <span class="brand" aria-hidden="true">
+      <svg class="mark" focusable="false"><use href="#helgo-mark"/></svg>
+      <span class="word">HelGo</span>
+    </span>
+    <nav aria-label="Sidfot"><a href="../">Start</a><a href="../support/">Support</a><a href="../integritet/">Integritet</a></nav>
+    <p>© 2026 HelGo</p>
+  </footer>
+</div>
+</body>
+</html>

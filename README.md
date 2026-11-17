@@ -9,6 +9,8 @@ JavaScript (årtalet i sidfoten). Sidan fungerar utan JavaScript.
 
 ```
 index.html          hela sidan
+integritet/         integritetspolicyn (krävs av App Store)
+support/            supportsidan med vanliga frågor (krävs av App Store)
 img/plan.png|webp   skärmbild av appens planvy
 img/kalender.*      skärmbild av appens kalendervy, mars 2027
 img/appicon-1024.png, apple-touch-icon.png, icon-512.png
@@ -16,6 +18,16 @@ CNAME               helgoapp.se
 robots.txt, sitemap.xml
 .nojekyll           hindrar Jekyll från att processa filerna
 ```
+
+## Integritet och support
+
+App Store kräver att `https://helgoapp.se/integritet/` och `https://helgoapp.se/support/`
+går att nå när appen skickas in. Länkarna mellan sidorna är relativa, så de fungerar både
+på `almirbabovic-bit.github.io/helgoapp.se/` och på domänen.
+
+Fyll i `[org.nr]` och `[postadress]` i integritetspolicyn när Ilma Group AB är registrerat.
+Ändras det som skickas från appen, uppdatera policyn och datumet högst upp. Svaren till
+Apples integritetsformulär finns i `docs/app-store.md` i appens repo.
 
 ## Designkälla
 
