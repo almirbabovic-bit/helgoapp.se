@@ -150,6 +150,8 @@ a{color:var(--ink)}
   display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center;
   justify-content:space-between; font-size:13px; line-height:20px; color:var(--muted)}
 .site-foot .brand .word{font-size:19px}
+.foot-nav{display:flex; gap:4px 18px; flex-wrap:wrap}
+.foot-nav a{color:var(--muted); min-height:44px; display:inline-flex; align-items:center}
 
 /* ---------- Responsivt ---------- */
 @media (max-width:900px){
@@ -329,8 +331,9 @@ a{color:var(--ink)}
         <h2 id="integritet-rubrik">Allt stannar i telefonen.</h2>
       </div>
       <div>
-        <p>HelGo har inget konto, ingen inloggning och ingen server. Dina semesterdagar och
-          markeringar sparas lokalt på enheten. Avinstallerar du appen försvinner de med den.</p>
+        <p>HelGo har inget konto och ingen inloggning. Din plan, dina barn och din lön sparas
+          lokalt på enheten och skickas ingenstans. Om appen kraschar skickas en anonym felrapport,
+          så att felet kan rättas. Läs mer i <a href="integritet/">integritetspolicyn</a>.</p>
       </div>
     </section>
   </div>
@@ -360,6 +363,7 @@ a{color:var(--ink)}
       <svg class="mark" focusable="false"><use href="#helgo-mark"/></svg>
       <span class="word">HelGo</span>
     </span>
+    <nav class="foot-nav" aria-label="Sidfot"><a href="support/">Support</a><a href="integritet/">Integritet</a></nav>
     <p>© <span id="ar">2026</span> HelGo · Mer tid för livet utanför jobbet.</p>
   </footer>
 </div>
