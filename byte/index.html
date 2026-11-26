@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Förslag på byte – HelGo</title>
+<meta name="description" content="Ett förslag på byte från Två hem i HelGo. Öppna det i appen för att svara.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F6F0">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="../img/appicon-1024.png" sizes="any" type="image/png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<style>
+:root{--paper:#F6F6F0;--surface:#FFFFFF;--ink:#183C34;--text:#233D36;--muted:#5A6960;--primary:#214F41;--soft:#E6EEE5;--line:#E1E5DC;--logo-green:#234F40}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:25px;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin-inline:auto;padding:28px 24px 48px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:44px;color:var(--logo-green)}
+.brand img{width:34px;height:34px;border-radius:9px}
+.brand span{font-size:23px;font-weight:700;letter-spacing:-0.04em}
+h1{color:var(--ink);font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.03em;margin:28px 0 10px}
+p{margin:0 0 14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;margin:20px 0}
+.button{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;text-decoration:none;font-size:17px}
+.muted{color:var(--muted);font-size:14px;line-height:21px}
+:focus-visible{outline:3px solid #5D7D62;outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="/"><img src="../img/appicon-1024.png" alt=""><span>HelGo</span></a>
+  <h1 id="title">Förslag på byte</h1>
+  <p id="lead">Någon har skickat ett förslag från Två hem i HelGo. Öppna det i appen för att svara ja eller nej.</p>
+  <a class="button" id="open" href="helgo://byte">Öppna i HelGo</a>
+  <div class="card">
+    <p><strong>Har du inte HelGo?</strong></p>
+    <p class="muted">HelGo finns snart i App Store. När du har installerat appen trycker du på länken i meddelandet igen.</p>
+  </div>
+  <p class="muted">Förslaget finns bara i länken. Den här sidan skickar det inte vidare och sparar ingenting: delen efter # i adressen lämnar aldrig din telefon.</p>
+</main>
+<script>
+// The proposal is in the fragment, which browsers never send to the server.
+// Pass it on to the app; nothing else is read or stored.
+(function () {
+  var hash = location.hash || "";
+  if (hash.indexOf("d=") === -1) return;
+  document.getElementById("open").href = "helgo://byte" + hash;
+  try {
+    var data = JSON.parse(decodeURIComponent(hash.replace(/^#d=/, "")));
+    if (data && typeof data.n === "string" && data.n) {
+      var name = data.n.slice(0, 40);
+      document.getElementById("title").textContent = data.k === "answer" ? name + " har svarat" : name + " föreslår ett byte";
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
